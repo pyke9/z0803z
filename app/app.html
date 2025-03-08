@@ -37,7 +37,7 @@
         Chúc mừng ngày 8/3 mãi xinh đẹp như bông hồng nhá
       </div>
       <div class="music-control">
-        <audio controls autoplay loop class="music" style="display:none;">
+        <audio controls autoplay loop class="music" style="display:none;" loop>
           <source src="/music/nhac-chuong-di-giua-troi-ruc-ro-ver-2-ngo-lan-huong.mp3" type="audio/mp3" />
         </audio>
       </div>
@@ -51,12 +51,27 @@
     <div id="universe"></div>
 
     <script>
-      document.addEventListener("click", function () {
-        let audio = document.getElementById("music");
-        if (audio.paused) {
+      document.addEventListener("DOMContentLoaded", function () {
+        var audio = document.querySelector(".music");
+    
+        // Kiểm tra xem có trạng thái phát nhạc được lưu không
+        if (localStorage.getItem("musicPlaying") === "true") {
           audio.play();
         }
-      }, { once: true }); // Chỉ kích hoạt một lần khi user click đầu tiên
+    
+        // Khi người dùng click vào trang, phát nhạc nếu chưa chạy
+        window.addEventListener("click", function () {
+          if (audio.paused) {
+            audio.play();
+            localStorage.setItem("musicPlaying", "true");
+          }
+        });
+    
+        // Khi người dùng rời trang, lưu trạng thái nhạc
+        window.addEventListener("beforeunload", function () {
+          localStorage.setItem("musicPlaying", !audio.paused);
+        });
+      });
 	   </script>
     <script src="../public/script/Colors.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/104/three.min.js"></script>
