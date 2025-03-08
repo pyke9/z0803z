@@ -22,6 +22,18 @@
 			<input type="text" placeholder="Tên bạn là gì?" />
 			<div class="btncdapp" onclick="move()">Được rồi đi thôi</div>
 		</div>
+		<div class="music-control">
+			<audio controls autoplay loop class="music" style="display:none;">
+			  <source src="./music/di-giua-troi-ruc-ro-ost-ngo-lan-huong.mp3" type="audio/mp3" />
+			</audio>
+		</div>
 		<script src="./dang/8th-March/Scripts/homepage.js"></script>
+		<script>
+			window.addEventListener('click', function () {
+				   var audio = document.querySelector('.music');
+				   audio.play();
+			   });
+	   </script>
 	</body>
 </html>
+
