@@ -59,10 +59,12 @@
     <script src="../public/script/three.js"></script>
     <script src="../public/script/index.js"></script>
     <script>
-			window.addEventListener('click', function () {
-				   var audio = document.querySelector('.music');
-				   audio.play();
-			   });
+      document.addEventListener("click", function () {
+        let audio = document.getElementById("music");
+        if (audio.paused) {
+          audio.play();
+        }
+      }, { once: true }); // Chỉ kích hoạt một lần khi user click đầu tiên
 	   </script>
   </body>
 </html>
