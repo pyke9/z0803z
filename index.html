@@ -32,22 +32,22 @@
 			document.addEventListener("DOMContentLoaded", function () {
 				var audio = document.querySelector(".music");
 			
-				// Kiểm tra xem có trạng thái phát nhạc được lưu không
-				if (localStorage.getItem("musicPlaying") === "true") {
+				// Kiểm tra nếu người dùng đã bật nhạc trước đó
+				if (localStorage.getItem("isPlaying") === "true") {
 				  audio.play();
 				}
 			
-				// Khi người dùng click vào trang, phát nhạc nếu chưa chạy
+				// Bắt sự kiện click để phát nhạc nếu nó chưa chạy
 				window.addEventListener("click", function () {
 				  if (audio.paused) {
 					audio.play();
-					localStorage.setItem("musicPlaying", "true");
+					localStorage.setItem("isPlaying", "true");
 				  }
 				});
 			
-				// Khi người dùng rời trang, lưu trạng thái nhạc
+				// Khi người dùng rời khỏi trang, lưu trạng thái nhạc
 				window.addEventListener("beforeunload", function () {
-				  localStorage.setItem("musicPlaying", !audio.paused);
+				  localStorage.setItem("isPlaying", !audio.paused);
 				});
 			  });
 	   </script>

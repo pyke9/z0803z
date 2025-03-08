@@ -51,26 +51,9 @@
     <div id="universe"></div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var audio = document.querySelector(".music");
-    
-        // Kiểm tra xem có trạng thái phát nhạc được lưu không
-        if (localStorage.getItem("musicPlaying") === "true") {
-          audio.play();
-        }
-    
-        // Khi người dùng click vào trang, phát nhạc nếu chưa chạy
-        window.addEventListener("click", function () {
-          if (audio.paused) {
-            audio.play();
-            localStorage.setItem("musicPlaying", "true");
-          }
-        });
-    
-        // Khi người dùng rời trang, lưu trạng thái nhạc
-        window.addEventListener("beforeunload", function () {
-          localStorage.setItem("musicPlaying", !audio.paused);
-        });
+      window.addEventListener('click', function () {
+        var audio = document.querySelector('.music');
+        audio.play();
       });
 	   </script>
     <script src="../public/script/Colors.js"></script>
